@@ -6,3 +6,6 @@ node_modules
 
 # Compiled Output
 dist/
+
+# Ignore the generated Prisma Client
+/src/generated/prisma
