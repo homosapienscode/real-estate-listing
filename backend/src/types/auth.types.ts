@@ -4,6 +4,7 @@ export interface AuthTokenPayload {
   sub: string;
   email: string;
   role: UserRole;
+  isAdmin: boolean;
 }
 
 export interface AuthenticatedUser {
@@ -11,4 +12,5 @@ export interface AuthenticatedUser {
   name: string;
   email: string;
   role: UserRole;
+  isAdmin: boolean;
 }

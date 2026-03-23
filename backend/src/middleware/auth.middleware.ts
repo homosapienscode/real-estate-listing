@@ -1,10 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env";
-import { ForbiddenError, UnauthorizedError } from "../error";
+import { UnauthorizedError } from "../error";
 import { AuthTokenPayload } from "../types/auth.types";
-import { UserRole } from "../generated/prisma/client";
-
 
 export function authMiddleware(
   req: Request,
@@ -33,6 +31,7 @@ export function authMiddleware(
       name: "",
       email: payload.email,
       role: payload.role,
+      isAdmin: payload.isAdmin,
     };
 
     return next();
@@ -44,7 +43,7 @@ export function authMiddleware(
 export function optionalAuthMiddleware(
   req: Request,
   _res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const authHeader = req.headers.authorization;
 
@@ -66,6 +65,7 @@ export function optionalAuthMiddleware(
       name: "",
       email: payload.email,
       role: payload.role,
+      isAdmin: payload.isAdmin,
     };
   } catch {
     // Continues as anonymous

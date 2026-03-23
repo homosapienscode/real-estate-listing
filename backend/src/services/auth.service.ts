@@ -7,7 +7,7 @@ import {
   createUser,
   findUserByEmail,
   findUserById,
-} from "../repositories/users.repositories";
+} from "../repositories/users.repository";
 import { LoginInput, RegisterInput } from "../validators/auth.validator";
 
 export async function registerUser(input: RegisterInput) {
@@ -24,12 +24,14 @@ export async function registerUser(input: RegisterInput) {
     email: input.email,
     password: passwordHash,
     role: UserRole.USER,
+    isAdmin: false,
   });
 
   const accessToken = generateAccessToken({
     id: user.id,
     email: user.email,
     role: user.role,
+    isAdmin: user.isAdmin,
   });
 
   return {
@@ -55,6 +57,7 @@ export async function loginUser(input: LoginInput) {
     id: user.id,
     email: user.email,
     role: user.role,
+    isAdmin: user.isAdmin
   });
 
   return {

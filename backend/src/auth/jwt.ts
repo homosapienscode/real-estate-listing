@@ -7,6 +7,7 @@ interface GenerateTokenInput {
   id: string;
   email: string;
   role: UserRole;
+  isAdmin: boolean;
 }
 
 export function generateAccessToken(input: GenerateTokenInput): string {
@@ -14,6 +15,7 @@ export function generateAccessToken(input: GenerateTokenInput): string {
     sub: input.id,
     email: input.email,
     role: input.role,
+    isAdmin: input.isAdmin,
   };
 
   return jwt.sign(payload, env.jwtSecret, {

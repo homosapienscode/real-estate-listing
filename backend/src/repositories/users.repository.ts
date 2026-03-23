@@ -6,6 +6,7 @@ interface CreateUserInput {
   email: string;
   password: string;
   role?: UserRole;
+  isAdmin?: boolean;
 }
 
 export async function findUserByEmail(email: string): Promise<User | null> {
@@ -27,6 +28,7 @@ export async function createUser(input: CreateUserInput): Promise<User> {
       email: input.email,
       password: input.password,
       role: input.role ?? UserRole.USER,
+      isAdmin: input.isAdmin ?? false,
     },
   });
 }
