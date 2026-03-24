@@ -11,7 +11,8 @@
     "build": "tsc",
     "start": "node dist/src/app.js",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "db:seed": "ts-node-dev --transpile-only prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
