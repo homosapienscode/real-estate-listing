@@ -1,18 +1,9 @@
 import { Router } from "express";
 import { optionalAuthMiddleware } from "../middleware/auth.middleware";
+import { getListingById, getListings } from "../controllers/listings.controller";
 
 export const listingsRouter = Router();
 
-listingsRouter.get("/", optionalAuthMiddleware, (_req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "GET /api/listings",
-  });
-});
+listingsRouter.get("/", optionalAuthMiddleware, getListings);
 
-listingsRouter.get("/:id", optionalAuthMiddleware, (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: `GET /api/listings/${req.params.id}`,
-  });
-});
+listingsRouter.get("/:id", optionalAuthMiddleware, getListingById);

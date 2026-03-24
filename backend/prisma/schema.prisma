@@ -15,7 +15,21 @@ datasource db {
 enum UserRole {
   ADMIN
   USER
-  AGENT
+}
+
+enum ListingType {
+  HOUSE
+  APARTMENT
+  TOWNHOUSE
+  LAND
+  VILLA
+}
+
+enum ListingStatus {
+  ACTIVE
+  SOLD
+  OFF_MARKET
+  DRAFT
 }
 
 model User {
@@ -28,7 +42,29 @@ model User {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
-  // agent        Agent?
-
   @@index([role])
 }
+
+model Listing {
+  id                  String        @id @default(cuid())
+  title               String
+  description         String
+  price               Int
+  bedrooms            Int
+  bathrooms           Int
+  propertyType        ListingType
+  status              ListingStatus @default(ACTIVE)
+
+  address             String
+  suburb              String
+  state               String
+  postcode            String
+  country             String        @default("Nepal")
+
+  heroImageUrl        String?
+  internalStatusNotes String?
+
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+}
+
