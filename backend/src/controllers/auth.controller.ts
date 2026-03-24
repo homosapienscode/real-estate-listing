@@ -26,6 +26,7 @@ export async function register(
           id: result.user.id,
           name: result.user.name,
           email: result.user.email,
+          isAdmin: result.user.isAdmin,
           role: result.user.role,
           createdAt: result.user.createdAt,
           updatedAt: result.user.updatedAt,
@@ -50,6 +51,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
           id: result.user.id,
           name: result.user.name,
           email: result.user.email,
+          isAdmin: result.user.isAdmin,
           role: result.user.role,
           createdAt: result.user.createdAt,
           updatedAt: result.user.updatedAt,
@@ -76,6 +78,7 @@ export async function me(req: Request, res: Response, next: NextFunction) {
         user: {
           id: user.id,
           name: user.name,
+          isAdmin: user.isAdmin,
           email: user.email,
           role: user.role,
           createdAt: user.createdAt,
