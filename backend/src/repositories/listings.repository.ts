@@ -73,8 +73,8 @@ function buildListingsWhereClause(
 
 export async function findListings(filters: ListingSearchParams) {
   const where = buildListingsWhereClause(filters);
-  const skip = (filters.page - 1) * filters.pageSize;
-  const take = filters.pageSize;
+  const skip = (filters.page - 1) * filters.limit;
+  const take = filters.limit;
 
   const [items, total] = await Promise.all([
     prisma.listing.findMany({

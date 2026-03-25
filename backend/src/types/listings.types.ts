@@ -2,7 +2,7 @@ import { ListingType } from "../generated/prisma/client";
 
 export interface ListingSearchParams {
   page: number;
-  pageSize: number;
+  limit: number;
   priceMin?: number;
   priceMax?: number;
   bedroomsMin?: number;
@@ -14,7 +14,7 @@ export interface ListingSearchParams {
 
 export interface ListingSearchParams {
   page: number;
-  pageSize: number;
+  limit: number;
   priceMin?: number;
   priceMax?: number;
   bedroomsMin?: number;

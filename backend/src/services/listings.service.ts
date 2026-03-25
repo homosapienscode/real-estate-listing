@@ -60,13 +60,13 @@ export function serializeListingDetail(listing: Listing, isAdmin: boolean) {
 export async function searchListings(filters: ListingSearchParams) {
   const { items, total } = await findListings(filters);
 
-  const totalPages = Math.max(1, Math.ceil(total / filters.pageSize));
+  const totalPages = Math.max(1, Math.ceil(total / filters.limit));
 
   return {
     items: items.map(serializeListingListItem),
     pagination: {
       page: filters.page,
-      pageSize: filters.pageSize,
+      limit: filters.limit,
       total,
       totalPages,
     },

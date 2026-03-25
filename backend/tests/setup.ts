@@ -102,7 +102,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
-  // Keep tests isolated and predictable
+  // Keep tests isolated
   await resetDatabase();
   await seedTestData();
 });
